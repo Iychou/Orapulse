@@ -1,0 +1,13 @@
+-- Example:
+-- @addm_report.sql ADDM:12345 /tmp/addm_report.txt
+
+DEFINE task_name=&1
+DEFINE report_file=&2
+
+SET LONG 1000000 LONGCHUNKSIZE 1000000 LINESIZE 200 PAGESIZE 0 FEEDBACK OFF VERIFY OFF TRIMSPOOL ON
+SPOOL &report_file
+
+SELECT DBMS_ADVISOR.GET_TASK_REPORT('&&task_name') AS report
+FROM dual;
+
+SPOOL OFF
