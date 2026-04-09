@@ -1,0 +1,35 @@
+global:
+  output_dir: reports
+  log_level: INFO
+  poll_interval_seconds: 300
+  report_retention_days: 14
+  alert_channels:
+    - log
+
+databases:
+  - name: primary
+    host: db.example.com
+    port: 1521
+    service_name: ORCLPDB1
+    username: monitor_user
+    password_env: ORAPULSE_DB_PASSWORD
+    mode: thin
+    thresholds:
+      cpu_percent: 80
+      avg_active_sessions: 8
+      io_wait_ms: 20
+      long_running_sql_seconds: 300
+      blocking_sessions: 1
+      top_wait_event_pct: 40
+
+alerts:
+  email:
+    enabled: false
+    smtp_host: smtp.example.com
+    smtp_port: 587
+    use_tls: true
+    username: alerts@example.com
+    password_env: ORAPULSE_SMTP_PASSWORD
+    from: alerts@example.com
+    to:
+      - dba-team@example.com

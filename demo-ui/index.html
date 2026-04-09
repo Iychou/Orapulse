@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OraPulse Demo UI</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Interface de demonstration</p>
+        <h1>OraPulse Result Viewer</h1>
+        <p class="subtitle">
+          Une interface web simple pour afficher les resultats du projet OraPulse
+          pendant une presentation ou une explication.
+        </p>
+      </div>
+      <div class="hero-badge">
+        <span>Projet DBA</span>
+        <strong>Oracle Performance</strong>
+      </div>
+    </header>
+
+    <section class="grid metrics-grid">
+      <article class="metric-card">
+        <span>Base de donnees</span>
+        <strong id="metric-db">-</strong>
+      </article>
+      <article class="metric-card">
+        <span>CPU Usage</span>
+        <strong id="metric-cpu">-</strong>
+      </article>
+      <article class="metric-card">
+        <span>Active Sessions</span>
+        <strong id="metric-aas">-</strong>
+      </article>
+      <article class="metric-card">
+        <span>Blocking Sessions</span>
+        <strong id="metric-blocking">-</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <h2>Findings</h2>
+        <p>Les problemes principaux detectes par le projet.</p>
+      </div>
+      <div id="findings-list" class="findings-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <h2>Top SQL</h2>
+        <p>Les requetes les plus couteuses ou lentes.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>SQL ID</th>
+              <th>Avg Elapsed</th>
+              <th>Executions</th>
+              <th>Buffer Gets</th>
+              <th>SQL Text</th>
+            </tr>
+          </thead>
+          <tbody id="top-sql-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel two-columns">
+      <div>
+        <div class="section-title">
+          <h2>Wait Events</h2>
+          <p>Les principaux evenements d'attente.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Samples</th>
+                <th>Percent</th>
+              </tr>
+            </thead>
+            <tbody id="wait-events-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">
+          <h2>Session Activity</h2>
+          <p>Vue simple de l'activite recente.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Module</th>
+                <th>Active Sessions</th>
+                <th>Wait Class</th>
+              </tr>
+            </thead>
+            <tbody id="session-activity-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
